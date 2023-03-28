@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.lojadegames.model.Categoria;
+import com.generation.lojadegames.model.Produto;
 import com.generation.lojadegames.repository.CategoriaRepository;
 
 @RestController
@@ -44,9 +45,8 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("genero/{genero}")
-	public ResponseEntity<List<Categoria>> getByTitle(@PathVariable String descricao){
-		return ResponseEntity.ok(categoriaRepository
-				.findAllByGeneroContainingIgnoreCase(descricao));
+	public ResponseEntity<List<Categoria>> getByGenero(@PathVariable String genero) {
+		return ResponseEntity.ok(categoriaRepository.findAllByGeneroContainingIgnoreCase(genero));
 	}
 	
 	@PostMapping
